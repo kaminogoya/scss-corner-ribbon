@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>SCSS Corner Ribbon</title>
+    <link rel="stylesheet" href="./css/style.css">
+  </head>
+  <body>
+    <header>
+      <h1>CSS Corner Ribbon</h1>
+    </header>
+    <div>
+      <div class="ribbon"><span class="label">Text</span></div>
+      <pre><code>selector {
+  @include corner-ribbon();
+}</code></pre>
+    </div>
+    <div>
+      <div class="ribbon02"><span class="label">Text</span></div>
+      <pre><code>selector {
+  @include corner-ribbon(<strong>pink</strong>);
+}</code></pre>
+    </div>
+    <div>
+      <div class="ribbon03"><span class="label">Text</span></div>
+      <pre><code>selector {
+  @include corner-ribbon(#165e83, <strong>150px</strong>);
+}</code></pre>
+    </div>
+    <div>
+      <div class="ribbon04"><span class="label">Text</span></div>
+      <pre><code>selector {
+  @include corner-ribbon(#ffcc00, 120px, <strong>10px</strong>);
+}</code></pre>
+    </div>
+    <div>
+      <div class="ribbon05"><span class="label">Text</span></div>
+      <pre><code>selector {
+  @include corner-ribbon(#007b43, <strong>$side_drop_width:20px</strong>);
+}</code></pre>
+    </div>
+  </body>
+</html>

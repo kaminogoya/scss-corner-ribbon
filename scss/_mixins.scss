@@ -1,0 +1,37 @@
+// Box Shadow
+@mixin box-shadow($params) {
+  @each $vendor in null {
+    #{$vendor}box-shadow: $params;
+  }
+}
+
+// Transform
+@mixin transform($functions) {
+  @each $vendor in -ms-, -webkit-, null {
+    #{$vendor}transform: $functions;
+  }
+}
+
+// Gradient
+/// Horizontal
+@mixin horizontal-gradient($start, $end) {
+  background-color: $end;
+  @each $vendor in -ms-, -moz-, -webkit-, null {
+    background-image: #{$vendor}linear-gradient($start, $end);
+  }
+}
+
+/// Vertical
+@mixin vertical-gradient($start, $end) {
+  background-color: $end;
+  @each $vendor in -ms-, -moz-, -webkit-, null {
+    background-image: #{$vendor}linear-gradient(left, $start, $end);
+  }
+}
+
+// Text Shadow
+@mixin text-shadow($params) {
+  @each $vendor in null {
+    #{$vendor}text-shadow: $params;
+  }
+}

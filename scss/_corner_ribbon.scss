@@ -1,0 +1,62 @@
+// Corner Ribbon
+@mixin corner-ribbon($base_color:red, $box_size:85px, $side_drop_width:6px) {
+  $red: red($base_color);
+  $green: green($base_color);
+  $blue: blue($base_color);
+  $gray_level: (($red + $green + $blue) / 3);
+
+  $ribbon_height: 26px;
+
+  $SQRT2: 1.41421356237;
+
+  position: absolute;
+  top: -$side_drop_width;
+  right: -$side_drop_width;
+  width: $box_size;
+  height: $box_size;
+  overflow: hidden;
+  font-size: 90%;
+
+  .label {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -(($ribbon_height / 2) + ((($ribbon_height / 2) * $SQRT2) / 2));
+    margin-left: -((($box_size * $SQRT2) / 2) - ((($ribbon_height / 2) * $SQRT2) / 2));
+    width: ($box_size * $SQRT2);
+    height: $ribbon_height;
+    @include transform(rotate(45deg));
+    @include horizontal-gradient(lighten($base_color, 10%), darken($base_color, 8%));
+    text-align: center;
+    text-transform: uppercase;
+    @include box-shadow(0 1px 2px rgba(0, 0, 0, 0.8));
+    font-weight: bold;
+    line-height: $ribbon_height;
+
+    @if $gray_level <= 128 {
+      color: rgba(255, 255, 255, 0.75);
+      @include text-shadow(-1px -1px 0 darken($base_color, 15%));
+    }
+    @else {
+      color: rgba(0, 0, 0, 0.75);
+      @include text-shadow(1px 1px 0 lighten($base_color, 15%));
+    }
+
+    &:before,
+    &:after {
+      position: absolute;
+      bottom: -($side_drop_width / $SQRT2);
+      content: "\0020";
+      border-top: ($side_drop_width / $SQRT2) solid darken($base_color, 30%);
+      border-left: ($side_drop_width / $SQRT2) solid transparent;
+      border-right: ($side_drop_width / $SQRT2) solid transparent;
+    }
+    &:before {
+      left: 0;
+    }
+    &:after {
+      right: 0;
+    }
+  }
+}
