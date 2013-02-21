@@ -7,6 +7,9 @@
 
 ## SCSS
 ```
+@import "mixins";
+@import "corner_ribbon";
+
 div {
   @include corner-ribbon(#507ea4);
 }
